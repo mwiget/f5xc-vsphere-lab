@@ -1,5 +1,5 @@
 module "appstack-dhcp" {
-  count = 0
+  # count = 0
   depends_on             = [ restapi_object.appstack-dhcp ]
   source                 = "./vsphere"
   f5xc_tenant            = var.f5xc_tenant
@@ -17,8 +17,8 @@ module "appstack-dhcp" {
   admin_password         = var.admin_password
   nodes   = [
     { name = "master-0", host = var.vsphere_host, datastore = var.vsphere_datastore, ipaddress = "dhcp" },
-    { name = "master-1", host = var.vsphere_host, datastore = var.vsphere_datastore, ipaddress = "dhcp" },
-    { name = "master-2", host = var.vsphere_host, datastore = var.vsphere_datastore, ipaddress = "dhcp" }
+    #    { name = "master-1", host = var.vsphere_host, datastore = var.vsphere_datastore, ipaddress = "dhcp" },
+    #    { name = "master-2", host = var.vsphere_host, datastore = var.vsphere_datastore, ipaddress = "dhcp" }
   ]
   outside_network        = "VM Network"
   dnsservers             = {

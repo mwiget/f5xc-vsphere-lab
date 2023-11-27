@@ -1,4 +1,5 @@
 module "securemesh-dual-dhcp" {
+  # count = 0
   depends_on             = [ restapi_object.securemesh-dual-dhcp ]
   source                 = "./vsphere"
   f5xc_tenant            = var.f5xc_tenant
@@ -142,7 +143,7 @@ locals {
 
 output "securemesh-dual-dhcp" {
   value = [
-    restapi_object.securemesh-dual-dhcp.api_response,
+    restapi_object.securemesh-dual-dhcp[*].api_response,
     module.securemesh-dual-dhcp
   ]
 }

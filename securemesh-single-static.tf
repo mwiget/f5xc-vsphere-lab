@@ -1,4 +1,5 @@
 module "securemesh-single-static" {
+  # count = 0
   depends_on             = [ restapi_object.securemesh-single-static ]
   source                 = "./vsphere"
   f5xc_tenant            = var.f5xc_tenant
@@ -82,8 +83,9 @@ locals {
 }
 
 output "securemesh-single-static" {
+  depends_on = [ restapi_object.securemesh-single-static ]
   value = [
     restapi_object.securemesh-single-static.api_response,
-    module.securemesh-single-static
+    module.securemesh-single-static[*]
   ]
 }
